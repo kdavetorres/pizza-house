@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PizzaController;
 use App\Models\Pizza;
@@ -21,11 +22,11 @@ Route::get('/', function () {
 
 // Route::get('/pizzas', 'PizzaController@index'); // v.6
 // Route::get('/pizzas', [PizzaController::class, 'index'])->name('pizzas'); // laravel v.8 
-Route::get('/pizzas', [PizzaController::class, 'index']);
+Route::get('/pizzas', [PizzaController::class, 'index'])->middleware('auth');
 Route::get('/pizzas/create', [PizzaController::class, 'create']);
-Route::get('/pizzas/{id}', [PizzaController::class, 'show']);
 Route::post('/pizzas', [PizzaController::class, 'store']);
-Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy']);
+Route::get('/pizzas/{id}', [PizzaController::class, 'show'])->middleware('auth');
+Route::delete('/pizzas/{id}', [PizzaController::class, 'destroy'])->middleware('auth');
 
 Auth::routes();
 
