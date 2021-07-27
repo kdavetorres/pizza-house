@@ -7,7 +7,8 @@
             <h1>The North's Best Pizza</h1>
         </div>
         <p class="mssg">{{ session('mssg') }}</p>
-        <a href="/pizzas/create">Order a Pizza</a>
+        <!-- <a href="/pizzas/create">Order a Pizza</a> hard-code-linking-->
+        <a href="{{ route('pizzas.create') }}">Order a Pizza</a>
     </div>
 </div>
 @endsection
